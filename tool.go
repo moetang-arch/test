@@ -85,6 +85,42 @@ func AssertNotNullWithMsg(msg string, e interface{}) {
 	}
 }
 
+func AssertStringEquals(result, expect string) {
+	if result != expect {
+		panic(newErrorContainer("result:", result, "expect:", expect))
+	}
+}
+
+func AssertStringEqualsWithMsg(msg, result, expect string) {
+	if result != expect {
+		panic(newErrorContainer(msg, "result:", result, "expect:", expect))
+	}
+}
+
+func AssertTrue(b bool) {
+	if !b {
+		panic(newErrorContainer("param is not true"))
+	}
+}
+
+func AssertTrueWithMsg(msg string, b bool) {
+	if !b {
+		panic(newErrorContainer(msg, ": is not true"))
+	}
+}
+
+func AssertFalse(b bool) {
+	if b {
+		panic(newErrorContainer("param is not false"))
+	}
+}
+
+func AssertFalseWithMsg(msg string, b bool) {
+	if b {
+		panic(newErrorContainer(msg, ": is not false"))
+	}
+}
+
 func AssertByteSliceEqualsWithMsg(msg string, expect, result []byte) {
 	if !bytes.Equal(expect, result) {
 		panic(newErrorContainer(msg, ": not equals", "expect:", expect, "result:", result))
